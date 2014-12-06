@@ -1,4 +1,4 @@
-ÔÚ³öÉúµãÀïÉè¶¨ load.lua
-È»ºóÓÃÂö³åÉú³ÉÆ÷¸ßÆµ¼¤»î falling.lua
+ï»¿åœ¨å‡ºç”Ÿç‚¹é‡Œè®¾å®š load.lua
+ç„¶åŽç”¨è„‰å†²ç”Ÿæˆå™¨é«˜é¢‘æ¿€æ´» falling.lua
 
-ÐèÒª×ÔÐÐÔÚfalling.luaÖÐ×ÔÐÐ½øÐÐ¶þ´Î¿ª·¢£¬²Å¿ÉÒÔ´ïµ½ÄãÒªµÄ¹¦ÄÜ
+éœ€è¦è‡ªè¡Œåœ¨falling.luaä¸­è‡ªè¡Œè¿›è¡ŒäºŒæ¬¡å¼€å‘ï¼Œæ‰å¯ä»¥è¾¾åˆ°ä½ è¦çš„åŠŸèƒ½

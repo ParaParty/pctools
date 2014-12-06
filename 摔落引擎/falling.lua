@@ -1,6 +1,6 @@
-﻿--[[
+--[[
 标题: ParaCraft摔落引擎
-版本：Alpha 0.0.2 [002]
+版本：Alpha 0.0.3 [003]
 作者: Eric
 创建时间: 2014年11月30日
 最后修改时间: 2014年11月30日
@@ -23,6 +23,10 @@ function main(entity)
 	if  (BlockEngine:GetBlockId(x,y-1,z)~=0) and
 	    (BlockEngine:GetBlockId(x,y-1,z)~=75) and
 		(BlockEngine:GetBlockId(x,y-1,z)~=76) and
+		(BlockEngine:GetBlockId(x,y,z)~=75) and
+		(BlockEngine:GetBlockId(x,y+1,z)~=75) and
+		(BlockEngine:GetBlockId(x,y,z)~=76) and
+		(BlockEngine:GetBlockId(x,y+1,z)~=76) and
 		(BlockEngine:GetBlockId(x,y-1,z)~=118) and
 		(BlockEngine:GetBlockId(x,y-1,z)~=113) and
 		(BlockEngine:GetBlockId(x,y-1,z)~=114) and
