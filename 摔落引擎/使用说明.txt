@@ -1,4 +1,5 @@
 ﻿在出生点里设定 load.lua
 然后用脉冲生成器高频激活 falling.lua
 
-需要自行在falling.lua中自行进行二次开发，才可以达到你要的功能
+load.lua 里有一些设定的选项可以参考一下
+falling.lua 里可以自定义一些内容，可以以打开看看

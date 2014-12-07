@@ -1,9 +1,9 @@
 --[[
 标题: ParaCraft摔落引擎
-版本：Alpha 0.0.3 [003]
+版本：Alpha 0.0.4 [004]
 作者: Eric
 创建时间: 2014年11月30日
-最后修改时间: 2014年11月30日
+最后修改时间: 2014年12月07日
 描述: 摔落引擎主体
 
 尊重作者版权：小伙伴们麻烦在空间里调用的时候顺手加上一句：重力伤害引擎由Eric提供
@@ -13,107 +13,125 @@ Eric_Lian <https://github.com/ExerciseBook> 版权所有©
 ]]--
 function main(entity)
 
+	local mode= GameLogic.GameMode:GetMode()	
 
 	local script = blocks.getscript(19175, 5 , 19236, true)
 		-- 从坐标为 19741 90 20193 的空气方块中获取全局变量映射到 script 变量
 	local x, y, z = EntityManager.GetPlayer():GetBlockPos()
 		-- 获取人物坐标
-
+	
+	if mode=='editor' then
+			
+	else
 		
-	if  (BlockEngine:GetBlockId(x,y-1,z)~=0) and
-	    (BlockEngine:GetBlockId(x,y-1,z)~=75) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=76) and
-		(BlockEngine:GetBlockId(x,y,z)~=75) and
-		(BlockEngine:GetBlockId(x,y+1,z)~=75) and
-		(BlockEngine:GetBlockId(x,y,z)~=76) and
-		(BlockEngine:GetBlockId(x,y+1,z)~=76) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=118) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=113) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=114) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=132) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=100) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=112) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=189) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=164) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=208) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=213) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=218) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=211) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=166) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=221) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=103) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=175) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=190) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=200) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=201) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=191) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=192) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=105) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=161) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=197) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=198) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=233) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=231) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=109) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=195) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=162) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=224) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=167) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=168) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=214) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=169) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=104) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=172) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=173) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=188) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=111) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=206) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=187) and
-		(BlockEngine:GetBlockId(x,y-1,z)~=163) then
-				-- 如果玩家是在方块上
-				if script.topy-y>=4 then
-					script.blood=script.blood-(script.topy-y-3);
-					cmd(string.format("/tip 剩余血量%d",script.blood),nil,entity);
-					if script.blood<=0 then 
-						script.blood=20;
-						--[[
-							在此处添加你要的内容吧
-							添加命令的方法：cmd("你的命令",nil,entity);
-							如：
-						]]--
-						cmd("/tip 你挂掉了",nil,entity);
-					end
-				end
-				if (script.topy==y) and (script.blood<=20) and (script.bloodadd==10) then
-					script.blood=script.blooc+1;
-					bloodadd=0;
-				end;
-				script.topy=y;
-				bloodadd=bloodadd+1;
-		else
-				--如果玩家不是在方块上
-				if (BlockEngine:GetBlockId(x,y-1,z)==75) or
-				   (BlockEngine:GetBlockId(x,y,z)==75) or
-				   (BlockEngine:GetBlockId(x,y+1,z)==75) or
-				   (BlockEngine:GetBlockId(x,y+2,z)==75) or
-				   (BlockEngine:GetBlockId(x,y-1,z)==76) or
-				   (BlockEngine:GetBlockId(x,y,z)==76) or
-				   (BlockEngine:GetBlockId(x,y+1,z)==76) or
-				   (BlockEngine:GetBlockId(x,y+2,z)==76) then
-				   --当玩家在水上那就有保护啦
-				   --[[
-						脚下，身体，头上
-						脚下 x y-1 z
-						身体 x y z , x y+1 z
-						头上 x y+2 z
-				   ]]--
+			if  (BlockEngine:GetBlockId(x,y-1,z)~=0) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=75) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=76) and
+				(BlockEngine:GetBlockId(x,y,z)~=75) and
+				(BlockEngine:GetBlockId(x,y+1,z)~=75) and
+				(BlockEngine:GetBlockId(x,y,z)~=76) and
+				(BlockEngine:GetBlockId(x,y+1,z)~=76) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=118) and
+				(BlockEngine:GetBlockId(x,y,z)~=118) and
+				(BlockEngine:GetBlockId(x,y+1,z)~=118) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=113) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=114) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=132) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=100) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=112) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=189) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=164) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=208) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=213) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=218) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=211) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=166) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=221) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=103) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=175) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=190) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=200) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=201) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=191) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=192) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=105) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=161) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=197) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=198) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=233) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=231) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=109) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=195) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=162) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=224) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=167) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=168) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=214) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=169) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=104) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=172) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=173) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=188) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=111) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=206) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=187) and
+				(BlockEngine:GetBlockId(x,y-1,z)~=163) then
+						-- 如果玩家是在方块上
+						if script.topy-y>=4 then
+							cmd(string.format("/clearbag %d %d",script.bloodicon,(script.topy-y-3)),nil,entity);
+							script.blood=script.blood-(script.topy-y-3);
+							--cmd(string.format("/tip 剩余血量%d",script.blood),nil,entity);
+							script.topy=y;
+							if script.blood<=0 then 
+								script.blood=20;
+								--[[
+									在此处添加你要的内容吧
+									添加命令的方法：cmd("你的命令",nil,entity);
+									如：
+								]]--
+								cmd("/tip 你挂掉了",nil,entity);
+								cmd(string.format("/clearbag %d",script.bloodicon),nil,entity);
+								cmd(string.format("/give %d 20",script.bloodicon),nil,entity);
+							end;
+						end;
+						if (script.blood<20) and (script.bloodadd>=5) then
+							script.blood=script.blood+1;
+							script.bloodadd=0;
+							cmd(string.format("/give %d 1",script.bloodicon),nil,entity);
+							--cmd(string.format("/tip 剩余血量%d",script.blood),nil,entity);
+						end;
+						if (script.blood>=20) then
+							script.bloodadd=0;
+						end;
 						script.topy=y;
+						script.bloodadd=script.bloodadd+1;
 				else
-					if script.topy<y then script.topy=y end;
-				end
-				
-		end;
-		
+						--如果玩家不是在方块上
+						if (BlockEngine:GetBlockId(x,y-1,z)==75) or
+						   (BlockEngine:GetBlockId(x,y,z)==75) or
+						   (BlockEngine:GetBlockId(x,y+1,z)==75) or
+						   (BlockEngine:GetBlockId(x,y+2,z)==75) or
+						   (BlockEngine:GetBlockId(x,y-1,z)==76) or
+						   (BlockEngine:GetBlockId(x,y,z)==76) or
+						   (BlockEngine:GetBlockId(x,y+1,z)==76) or
+						   (BlockEngine:GetBlockId(x,y+2,z)==76) or
+						   (BlockEngine:GetBlockId(x,y-1,z)==118) or
+						   (BlockEngine:GetBlockId(x,y,z)==118) or
+						   (BlockEngine:GetBlockId(x,y+1,z)==118) then
+						   --当玩家在水上或者蜘蛛网里那就有保护啦
+						   --[[
+								脚下，身体，头上
+								脚下 x y-1 z
+								身体 x y z , x y+1 z
+								头上 x y+2 z
+						   ]]--
+								script.topy=y;
+						else
+							if script.topy<y then script.topy=y end;
+						end
+						
+				end;
+	end
 	
 end
 
