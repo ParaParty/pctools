@@ -1,4 +1,6 @@
 --[[
+Copyright (C) 2014 LianHongrui
+
 标题: ParaCraft摔落引擎
 版本：Alpha 0.0.4 [004]
 作者: Eric

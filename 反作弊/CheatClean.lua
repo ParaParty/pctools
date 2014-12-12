@@ -1,4 +1,6 @@
 ﻿--[[
+Copyright (C) 2014 LianHongrui
+
 标题: ParaCraft反作弊引擎
 版本：Alpha 0.0.1 [001]
 作者: Eric
