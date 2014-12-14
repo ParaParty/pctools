@@ -17,12 +17,12 @@ function main(entity)
 	local script = blocks.getscript(19175, 5 , 19236, true)
 		-- 从坐标为 19741 90 20193 的空气方块中获取全局变量映射到 script 变量
 	
-	local ChangeRange=math.random()/50;
+	local ChangeRange=math.random()/script.speed;
 	
 	
 	-- 红色渐变
 	if script.rr-script.rl~=0 then
-		ChangeRange=math.random()/50;
+		ChangeRange=math.random()/script.speed;
 		if script.rw==1 then
 			if script.r+ChangeRange>script.rr then 
 				script.r=script.rr;
@@ -42,7 +42,7 @@ function main(entity)
 	
 	-- 绿色渐变
 	if script.gr-script.gl~=0 then
-		ChangeRange=math.random()/50;
+		ChangeRange=math.random()/script.speed;
 		if script.gw==1 then
 			if script.g+ChangeRange>script.gr then 
 				script.g=script.gr;
@@ -62,7 +62,7 @@ function main(entity)
 	
 	-- 蓝色渐变
 		if script.br-script.bl~=0 then
-		ChangeRange=math.random()/50;
+		ChangeRange=math.random()/script.speed;
 		if script.bw==1 then
 			if script.b+ChangeRange>script.br then 
 				script.b=script.br;

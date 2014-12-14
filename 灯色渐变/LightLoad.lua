@@ -34,6 +34,8 @@ function main(entity)
 	script.br=1.48;
 		-- 蓝色渐变上标
 	
+	script.speed=20
+		-- 颜色变化速度，越大越慢，不要小于1
 	
 	--[[上面的是设置内容]]--
 	
