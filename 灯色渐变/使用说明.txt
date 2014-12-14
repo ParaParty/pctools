@@ -1,0 +1,4 @@
+﻿在出生点里设定 LightLoad.lua
+在gameloop中加入 LightMain.lua
+
+LightLoad.lua 里有一些设定的选项可以参考一下
