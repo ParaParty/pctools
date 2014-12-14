@@ -2,7 +2,7 @@
 Copyright (C) 2014 LianHongrui
 
 标题: ParaCraft摔落引擎
-版本：Alpha 0.0.4 [004]
+版本：Alpha 0.0.5 [005]
 作者: Eric
 创建时间: 2014年11月30日
 最后修改时间: 2014年12月07日
@@ -21,11 +21,16 @@ function main(entity)
 		local x, y, z = EntityManager.GetPlayer():GetBlockPos()
 		-- 获取人物坐标
 	script.topy=y;
+	
 	script.blood=20;
 	-- 初始血量
 	script.bloodadd=0;
 	-- 初始血量添加计时器
+	script.bloodaddtime=20;
+	-- 20次激活回一点血
+	-- 0表示不自动回血
 	script.bloodicon=189;
 	-- 血量显示图标，方块id
+	
 	cmd(string.format("/give %d 20",script.bloodicon),nil,entity);
 end

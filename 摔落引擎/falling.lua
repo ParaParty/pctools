@@ -2,7 +2,7 @@
 Copyright (C) 2014 LianHongrui
 
 标题: ParaCraft摔落引擎
-版本：Alpha 0.0.4 [004]
+版本：Alpha 0.0.5 [005]
 作者: Eric
 创建时间: 2014年11月30日
 最后修改时间: 2014年12月07日
@@ -96,13 +96,13 @@ function main(entity)
 								cmd(string.format("/give %d 20",script.bloodicon),nil,entity);
 							end;
 						end;
-						if (script.blood<20) and (script.bloodadd>=5) then
+						if (script.bloodaddtime~=0) and (script.blood<20) and (script.bloodadd>=script.bloodaddtime) then
 							script.blood=script.blood+1;
 							script.bloodadd=0;
 							cmd(string.format("/give %d 1",script.bloodicon),nil,entity);
 							--cmd(string.format("/tip 剩余血量%d",script.blood),nil,entity);
 						end;
-						if (script.blood>=20) then
+						if (script.bloodaddtime~=0) and (script.blood>=script.bloodaddtime) then
 							script.bloodadd=0;
 						end;
 						script.topy=y;
