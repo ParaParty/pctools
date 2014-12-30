@@ -21,15 +21,15 @@ function main(entity)
 	-- 颜色取值范围 0~1.48 对应[0~255]
 	script.rl=0.0;
 		-- 红色渐变下标
-	script.rr=0.0;
+	script.rr=1.48 ;
 		-- 红色渐变上标
 		
-	script.gl=0.74;
+	script.gl=0.0;
 		-- 绿色渐变下标
 	script.gr=1.48;
 		-- 绿色渐变上标
 		
-	script.bl=1.48;
+	script.bl=0.0;
 		-- 蓝色渐变下标
 	script.br=1.48;
 		-- 蓝色渐变上标

@@ -81,7 +81,7 @@ function main(entity)
 	end;
 	
 	--cmd(string.format("/tip %.3f %.3f %.3f",script.r,script.g,script.b),nil,entity);
-	cmd(string.format("/light %.2f %.2f %.2f",script.r,script.g,script.b),nil,entity);
+	cmd(string.format("/light %.3f %.3f %.3f",script.r,script.g,script.b),nil,entity);
 	-- 改变灯色
 	
 
