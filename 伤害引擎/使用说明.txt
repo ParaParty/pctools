@@ -1,5 +1,4 @@
 ﻿在出生点里设定 load.lua
-在gameloop中加入 falling.lua
-
+在gameloop中加入 falling.lua 【连闪器，高频脉冲激活
 load.lua 里有一些设定的选项可以参考一下
 falling.lua 里可以自定义一些内容，可以以打开看看

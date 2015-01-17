@@ -2,30 +2,70 @@
 Copyright (C) 2014 LianHongrui
 
 标题: ParaCraft摔落引擎
-版本：Alpha 0.0.5 [005]
+版本：Alpha 0.0.6 [006]
 作者: Eric
 创建时间: 2014年11月30日
 最后修改时间: 2014年12月07日
-描述: 摔落引擎主体
+描述: 伤害引擎主体
 
 尊重作者版权：小伙伴们麻烦在空间里调用的时候顺手加上一句：重力伤害引擎由Eric提供
 LiXizhi可以不用遵守上面那条规则【如果想在空间里这样增加一条小鸣谢我也不介意
 
+本代码接受NPL协议保护
+
 Eric_Lian <https://github.com/ExerciseBook> 版权所有©
 ]]--
+
+--[[
+创建时间：2015年1月17日
+用途：扣血
+]]--
+function BloodHurt(HurtVar)
+	local script = blocks.getscript(19175, 5 , 19236, true)
+	cmd(string.format("/clearbag %d %d",script.bloodicon,HurtVar),nil,entity);
+	script.blood=script.blood-HurtVar;
+	if script.blood<=0 then 
+		script.blood=20;
+		--[[
+			在此处添加你要的内容吧
+			添加命令的方法：cmd("你的命令",nil,entity);
+			如：
+		]]--
+		cmd("/tip 你挂掉了",nil,entity);
+		cmd(string.format("/clearbag %d",script.bloodicon),nil,entity);
+		cmd(string.format("/give %d 20",script.bloodicon),nil,entity);
+	end;
+end;
+
+--[[
+创建时间：2015年1月17日
+用途：加血
+]]--
+function BloodAdd(AddVar)
+	local script = blocks.getscript(19175, 5 , 19236, true)
+	cmd(string.format("/give %d %d",script.bloodicon,AddVar),nil,entity);
+	script.blood=script.blood+AddVar;
+	if script.blood>20 then 
+		script.blood=20;
+		cmd(string.format("/clearbag %d",script.bloodicon),nil,entity);
+		cmd(string.format("/give %d 20",script.bloodicon),nil,entity);
+	end;
+end;
+
 function main(entity)
 
 	local mode= GameLogic.GameMode:GetMode()	
 
 	local script = blocks.getscript(19175, 5 , 19236, true)
 		-- 从坐标为 19741 90 20193 的空气方块中获取全局变量映射到 script 变量
+				
 	local x, y, z = EntityManager.GetPlayer():GetBlockPos()
 		-- 获取人物坐标
 	
-	if mode=='editor' then
-			
+	if (mode=='editor') or (script.fallingEnable==0) then
+			-- 如果是创造模式或者被关闭了则不执行
 	else
-		
+			
 			if  (BlockEngine:GetBlockId(x,y-1,z)~=0) and
 				(BlockEngine:GetBlockId(x,y-1,z)~=75) and
 				(BlockEngine:GetBlockId(x,y-1,z)~=76) and
@@ -80,33 +120,11 @@ function main(entity)
 				(BlockEngine:GetBlockId(x,y-1,z)~=163) then
 						-- 如果玩家是在方块上
 						if script.topy-y>=4 then
-							cmd(string.format("/clearbag %d %d",script.bloodicon,(script.topy-y-3)),nil,entity);
-							script.blood=script.blood-(script.topy-y-3);
-							--cmd(string.format("/tip 剩余血量%d",script.blood),nil,entity);
+							BloodHurt(script.topy-y-3);
 							script.topy=y;
-							if script.blood<=0 then 
-								script.blood=20;
-								--[[
-									在此处添加你要的内容吧
-									添加命令的方法：cmd("你的命令",nil,entity);
-									如：
-								]]--
-								cmd("/tip 你挂掉了",nil,entity);
-								cmd(string.format("/clearbag %d",script.bloodicon),nil,entity);
-								cmd(string.format("/give %d 20",script.bloodicon),nil,entity);
-							end;
 						end;
-						if (script.bloodaddtime~=0) and (script.blood<20) and (script.bloodadd>=script.bloodaddtime) then
-							script.blood=script.blood+1;
-							script.bloodadd=0;
-							cmd(string.format("/give %d 1",script.bloodicon),nil,entity);
-							--cmd(string.format("/tip 剩余血量%d",script.blood),nil,entity);
-						end;
-						if (script.bloodaddtime~=0) and (script.blood>=script.bloodaddtime) then
-							script.bloodadd=0;
-						end;
-						script.topy=y;
-						script.bloodadd=script.bloodadd+1;
+
+						
 				else
 						--如果玩家不是在方块上
 						if (BlockEngine:GetBlockId(x,y-1,z)==75) or
@@ -130,10 +148,68 @@ function main(entity)
 								script.topy=y;
 						else
 							if script.topy<y then script.topy=y end;
-						end
-						
+						end;
+											
 				end;
-	end
+				
+			if (BlockEngine:GetBlockId(x,y-1,z)==82) or
+				(BlockEngine:GetBlockId(x,y,z)==82) or
+				(BlockEngine:GetBlockId(x,y+1,z)==82) then
+					script.isInLava=1;
+						-- 在岩浆里~在那坨岩浆里~
+					script.isBurning=5;
+						-- FFF团的逆袭
+				else
+					script.isInLava=0;
+						-- 走出了岩浆；
+			end;
+				
+			if (script.lastrun~=os.clock()) then
+			
+				script.lastrun=os.clock();
+				--cmd(string.format("/tip %d",BlockEngine:GetBlockId(x,y-1,z)),nil,entity);
+				
+					--[[加血部分控制]]--
+					if (os.clock()-script.bloodlastadd>=script.bloodaddtime) then
+						BloodAdd(1);
+							-- 加血
+						script.bloodlastadd=os.clock();
+							-- 刷新时间
+					end;
+					
+					--[[燃烧部分控制]]--
+					if (script.isBurning>0) then
+						script.isBurning=script.isBurning-1;
+					end;
+						-- 时间流逝
+					if (os.clock()-script.LastBurningHurt>=script.BurningHurtTime) and
+						(script.isBurning>0) then
+						BloodHurt(3);
+							-- 伤害走起
+						script.LastBurningHurtTime=os.clock();
+							-- 刷新时间
+					end;
+					
+					--[[恶心死人的岩浆部分控制]]--
+					if (os.clock()-script.LastInLavaTime>=script.LavaHurtTime) and
+						(script.isInLava==1) then
+						BloodHurt(8);
+							-- 伤害走起
+						script.LastInLavaTime=os.clock();
+							-- 刷新时间
+					end;
+					if (script.isInLava==0) then
+						script.BurningHurtTime=os.clock();
+						-- 如果没有在岩浆里就别管他啦
+					end;
+			end;
+	end;
+	
+	
+	--[[
+	cmd("/activate ~ ~ ~",nil,entity);
+	-- 激活自身，加入gameloop
+	--]]
 	
 end
 
