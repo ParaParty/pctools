@@ -1,1 +1,8 @@
-﻿在 gameloop 中加入 CheatAnit.lua
+﻿恩？
+出生点：
+激活 CheatAnit.lua 所在的命令方块  命令：/activate x y z
+
+你需要反作弊的时候就激活 CheatON.lua
+不需要就激活 CheatOFF.lua
+
+闲得无聊想清空作弊次数就 CheatClean.lua
