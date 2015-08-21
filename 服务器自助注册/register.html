@@ -1,0 +1,43 @@
+<form method="POST" action="">
+欢迎使用服务器注册页面<br/>
+这个版本还有很多bug，我都不理了_(:з」∠)_<br/>
+玩坏了别找我<br/>
+<br/>
+游戏愉快<br/>
+Version 0.0.1<br/>
+<br/>
+<br/>
+用户名<br/>
+<input type="text" name="username" value=""/><br/>
+密码<br/>
+<input type="password" name="password" value=""/><br/>
+重复密码<br/>
+<input type="password" name="repassword" value=""/><br/>
+<input type="submit" name="register" value="注册注册购购购!!!" /><br/>
+</form>
+
+<? 
+	if(request:get("register")) then
+		local username = tonumber(request:get("username"));
+		local password = tonumber(request:get("password"));
+		local repassword = tonumber(request:get("repassword"));
+		
+		if (username) and (password) and (repassword) then
+		
+			if password~=repassword then 
+				echo("两次输入密码不相同，请返回重新填写");
+			else
+				echo("注册成功");
+				GameLogic.CommandManager:RunCommand("/chat 【服务器娘】欢迎新人["..username.."]");
+				GameLogic.CommandManager:RunCommand("/register "..username.." "..password);
+			end;
+			
+		else
+			echo("有未曾输入项目，请返回重新填写");
+		end;
+
+		
+		
+		
+	end
+?>
