@@ -16,8 +16,8 @@
 
 友情链接
 =======
-创想家部落<http://pc.riotidea.tk:330/>
+创想家部落<https://paracraft.ga/>
 
 官方论坛<http://bbs.paraengine.com/>
 
-纷奇·主页<http://www.riotidea.tk:330/>
+缤奇·主页<http://binkic.club/>
