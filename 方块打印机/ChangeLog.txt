@@ -1,0 +1,3 @@
+2016-9-17
+ADD : Z轴正方向行走的方块打印机。字库 http://wenku.baidu.com/link?url=b0J044GA5NxN7QGMpkcVGP7YuueacxNS8moEBCo5QV-APXRWBef_FULkkLQ7pYn9T73BKojQvKdoyYFX2gfBL08tiSyqeulDygru1MGKVi_
+ADD : 颜色修改 使用 &XXXX 更换前景色 || 使用 -- $XXXX 更换背景色

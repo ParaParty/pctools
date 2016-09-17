@@ -51,3 +51,8 @@ ADD : 伤害引擎 : [006] : 模块化
 
 2015-08-21
 ADD : 自助注册 : [001] : 注册功能。没有判定其他特殊的情况和不怀好意的注册请求
+
+2016-9-17
+ADD :    总    : [XXX] : 加入方块打印机
+ADD :方块打印机: [001] : Z轴正方向行走的方块打印机。字库 http://wenku.baidu.com/link?url=b0J044GA5NxN7QGMpkcVGP7YuueacxNS8moEBCo5QV-APXRWBef_FULkkLQ7pYn9T73BKojQvKdoyYFX2gfBL08tiSyqeulDygru1MGKVi_
+ADD :方块打印机: [001] : 颜色修改 使用 &XXXX 更换前景色 || 使用 -- $XXXX 更换背景色
