@@ -16,8 +16,12 @@
 
 友情链接
 =======
-创想家部落<https://paracraft.ga/>
+创想家部落<https://paracraft.club/>
+
+啪啦排队<https://para.club/>
 
 官方论坛<http://bbs.paraengine.com/>
+
+官方网站<http://www.paracraft.cn/>
 
 缤奇·主页<http://binkic.club/>
