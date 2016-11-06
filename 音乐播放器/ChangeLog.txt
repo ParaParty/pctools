@@ -1,0 +1,5 @@
+﻿Date
+Release Type : Version : Release Data
+
+2014-11-06
+ADD : [001] : 完成 | 默认歌曲 [萤火虫之愿 - 埋葬]
